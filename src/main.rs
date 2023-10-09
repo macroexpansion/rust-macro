@@ -1,6 +1,6 @@
 use rust_macro::{a, bounded_impl};
 
-a!(Test, String);
+a!(Test, String, a + b c + d);
 
 trait Bounded {
     fn max_value() -> Self;
@@ -17,4 +17,8 @@ fn main() {
 
     let test = Test::new("test string".to_string());
     println!("{}", test.inner);
+    println!("{}", test.a);
+    println!("{}", test.b);
+    println!("{}", test.c);
+    println!("{}", test.d);
 }
