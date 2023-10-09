@@ -1,4 +1,6 @@
-use rust_macro::bounded_impl;
+use rust_macro::{a, bounded_impl};
+
+a!(Test, String);
 
 trait Bounded {
     fn max_value() -> Self;
@@ -12,4 +14,7 @@ fn main() {
 
     println!("{value}", value = u8::min_value());
     println!("{value}", value = u8::max_value());
+
+    let test = Test::new("test string".to_string());
+    println!("{}", test.inner);
 }
