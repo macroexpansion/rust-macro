@@ -5,3 +5,4 @@ edition = "2021"
 
 [dependencies]
 macro_derive = { path = "../macro_derive" }
+macro_attr = { path = "../macro_attr" }

@@ -1,4 +1,6 @@
+use macro_attr::macro_attribute;
 use macro_derive::HelloWorld;
+
 use rust_macro::{a, bounded_impl};
 
 a!(Test, String, a + b, c + d);
@@ -17,6 +19,12 @@ trait HelloWorld {
 #[derive(HelloWorld)]
 struct HelloStruct;
 
+#[macro_attribute]
+fn foo() {}
+
+#[macro_attribute(this, is an "attribute")]
+fn bar() {}
+
 fn main() {
     println!("{value}", value = u8::min_value());
     println!("{value}", value = u8::max_value());
@@ -29,4 +37,7 @@ fn main() {
     println!("{}", test.d);
 
     HelloStruct::hello();
+
+    foo();
+    bar();
 }
