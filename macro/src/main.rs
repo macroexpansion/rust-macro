@@ -1,6 +1,7 @@
+use macro_derive::HelloWorld;
 use rust_macro::{a, bounded_impl};
 
-a!(Test, String, a + b c + d);
+a!(Test, String, a + b, c + d);
 
 trait Bounded {
     fn max_value() -> Self;
@@ -9,9 +10,14 @@ trait Bounded {
 
 bounded_impl!(u8, u8::MIN, u8::MAX);
 
-fn main() {
-    println!("Hello, world!");
+trait HelloWorld {
+    fn hello();
+}
 
+#[derive(HelloWorld)]
+struct HelloStruct;
+
+fn main() {
     println!("{value}", value = u8::min_value());
     println!("{value}", value = u8::max_value());
 
@@ -21,4 +27,6 @@ fn main() {
     println!("{}", test.b);
     println!("{}", test.c);
     println!("{}", test.d);
+
+    HelloStruct::hello();
 }
